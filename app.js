@@ -22,11 +22,16 @@
 // AKTIVITAS 1: Setup Berkas & Integrasi JavaScript Eksternal
 // ============================================================
 // Menampilkan judul sistem ke tab Console (F12)
+
+
 console.log("=== SISTEM POIN MEMBER KEDAI KOPI ===");
+
 
 // TODO 1: Tulis satu baris console.log() untuk memastikan file app.js sudah terhubung!
 // Contoh output: "Skrip app.js berhasil terhubung!"
 
+
+console.log("Skrip app.js berhasil terhubung!")
 
 
 
@@ -41,6 +46,12 @@ console.log("=== SISTEM POIN MEMBER KEDAI KOPI ===");
 // 3. Cetak nilai NAMA_KEDAI, namaKasir, dan shiftKerja ke Console menggunakan console.log().
 
 
+const NAMA_KEDAI = "Kopi PSTI";
+let NAMA_KASIR = "Kuro";
+let SHIFT_KERJA = "Siang";
+console.log("Nama Kedai : " + NAMA_KEDAI);
+console.log("Nama Kasir : " + NAMA_KASIR);
+console.log("Shift Kerja : " + SHIFT_KERJA);
 
 
 // ---- DEMO PERBEDAAN LET vs CONST ----
@@ -49,6 +60,8 @@ console.log("=== SISTEM POIN MEMBER KEDAI KOPI ===");
 // lalu cetak ke Console untuk membuktikan bahwa variabel "let" nilainya dapat diubah.
 
 
+NAMA_KASIR = "Shiro";
+console.log(NAMA_KASIR);
 
 
 // ---- BAGIAN 2B: INPUT INTERAKTIF & PENGANDAIAN DASAR ----
@@ -58,6 +71,19 @@ console.log("=== SISTEM POIN MEMBER KEDAI KOPI ===");
 // 3. Gunakan percabangan "if - else":
 //    - JIKA namaPelanggan ada isinya: tampilkan alert sapaan dan log ke console.
 //    - JIKA namaPelanggan kosong / klik Cancel: beri nilai default "Pelanggan Setia" dan tampilkan alert pemberitahuan.
+
+
+alert("Terima kasih sudah berkunjung ke kedai Kopi PSTI");
+NAMA_PELANGGAN = prompt("Masukkan nama kamu ");
+if (NAMA_PELANGGAN) {
+    alert("Arigatou " + NAMA_PELANGGAN + " telah mengisi");
+    console.log("Hi " + NAMA_PELANGGAN );
+}
+else{
+alert("Kamu lupa masukin nama");
+NAMA_PELANGGAN = "Pelanggan Terhormat";
+console.log("Pelanggan Terhormat " + NAMA_PELANGGAN);
+}
 
 
 
@@ -73,6 +99,17 @@ console.log("=== SISTEM POIN MEMBER KEDAI KOPI ===");
 // 2. Buat variabel "totalPoin" yang menjumlahkan ketiga variabel poin di atas.
 // 3. Cetak rincian perolehan poin dan totalPoin ke Console menggunakan console.log().
 
+
+let PoinKopi = 40;
+let PoinMakanan = 40;
+let PoinMerchandise = 20;
+
+let TOTAL_POIN = PoinKopi + PoinMakanan + PoinMerchandise;
+
+console.log("=== Total Nilai " + NAMA_PELANGGAN + "===")
+console.log("Poin Kopi " + PoinKopi);
+console.log("Poin Makanan " + PoinMakanan);
+console.log("Poin Merchandise " + PoinMerchandise);
 
 
 
@@ -91,8 +128,28 @@ console.log("=== SISTEM POIN MEMBER KEDAI KOPI ===");
 // 4. Tampilkan ringkasan hasil member (nama, total poin, tier, benefit) via dialog alert().
 
 
+let TIER_MEMBER = "";
+let BENEFIT = "";
 
+if (TOTAL_POIN >= 100) {
+    TIER_MEMBER = "Platinum";
+    BENEFIT = "Diskon 20% + Gratis 1 Minuman Signature";
+}
+else if (TOTAL_POIN >= 70) {
+    TIER_MEMBER = "Gold";
+    BENEFIT = "Diskon 10% di setiap transaksi";
+}
+else if (TOTAL_POIN >= 40) {
+    TIER_MEMBER = "Silver";
+    BENEFIT = "Diskon 5% untuk menu minuman";
+}
+else {
+    TIER_MEMBER = "Bronze"
+    BENEFIT = "Member Reguler (kumpulkan poin untuk naik tier)";
+}
 
+console.log("Tier kamu sekarang : " + TIER_MEMBER + " Keuntungan : " + BENEFIT);
+alert("Arigatou " + NAMA_PELANGGAN + " Poin kamu : " + TOTAL_POIN + ", Tier kamu : " + TIER_MEMBER + ", Benefit : " + BENEFIT);
 // ============================================================
 // AKTIVITAS 5: Function — Membuat Fungsi yang Bisa Dipakai Ulang
 // ============================================================
@@ -102,12 +159,25 @@ console.log("=== SISTEM POIN MEMBER KEDAI KOPI ===");
 // menjumlahkannya, dan mengembalikan (return) nilai total penjumlahannya.
 
 
+function HITUNG_TOTAL_POIN(p1, p2, p3) {
+    let JUMLAH = p1 + p2 + p3;
+    return JUMLAH
+}
+
+
 
 
 // TODO 5B:
 // Buat fungsi "tentukanTierMember(poin)" yang menerima 1 parameter nilai poin,
 // dan mengembalikan (return) string nama tier beserta keterangannya.
 
+
+function TENTUKAN_TIER_MEMBER(Poin) {
+    if (Poin >= 100) return "Platinum - Diskon 20% + Gratis 1 Minuman Siganture";
+    if (Poin >= 70) return "Gold - Diskon 10% di setiap transaksi"; 
+    if (Poin >= 40) return "Silver - Diskon 5% untuk menu minuman";
+    return "Bronze - Member Reguler (kumpulkan poin untuk naik tier)";
+}
 
 
 
@@ -118,6 +188,19 @@ console.log("=== SISTEM POIN MEMBER KEDAI KOPI ===");
 // 3. Cetak data Pelanggan B dan C ke tab Console.
 
 
+let TotalPoinB = HITUNG_TOTAL_POIN(35, 25, 20);
+let TierB = TENTUKAN_TIER_MEMBER(TotalPoinB);
+
+let TotalPoinC = HITUNG_TOTAL_POIN(15, 10, 5);
+let TierC = TENTUKAN_TIER_MEMBER(TotalPoinC);
+
+console.log("=== Pelanggan B ===");
+console.log("Total Poin:", TotalPoinB);
+console.log("Tier:", TierB);
+
+console.log("=== Pelanggan C ===");
+console.log("Total Poin:", TotalPoinC);
+console.log("Tier:", TierC);
 
 
 // ============================================================
@@ -128,16 +211,26 @@ console.log("=== SISTEM POIN MEMBER KEDAI KOPI ===");
 // Buat variabel Array bernama "menuRekomendasi" yang berisi minimal 5 nama menu kopi/makanan.
 
 
+let MenuRekomendasi = [
+    "Caramel Macchiato",
+    "Kopi Susu Gula Aren",
+    "Croissant Butter Keju",
+    "Matcha Cream Latte",
+    "Cinnamon Roll Hangat",
 
+];
 
 // TODO 6B:
 // Gunakan perulangan "for loop" untuk mencetak setiap menu ke Console dengan format:
 // "1. Nama Menu", "2. Nama Menu", dst. Gunakan (i + 1) untuk nomor urutnya.
-
-
+for(let i = 0; i < MenuRekomendasi.length; i++) {
+    console.log((i+1) + ", " + MenuRekomendasi[i]);
+}
 
 
 // TODO 6C:
 // Cetak jumlah total menu di akhir daftar menggunakan properti ".length".
 // Akhiri program dengan: console.log("=== TUGAS MANDIRI SELESAI DENGAN SUKSES! ===");
+console.log("Total Menu : " + MenuRekomendasi.length);
+console.log("Selesai!!!");
 
