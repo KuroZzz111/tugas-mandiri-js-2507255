@@ -232,5 +232,5 @@ for(let i = 0; i < MenuRekomendasi.length; i++) {
 // Cetak jumlah total menu di akhir daftar menggunakan properti ".length".
 // Akhiri program dengan: console.log("=== TUGAS MANDIRI SELESAI DENGAN SUKSES! ===");
 console.log("Total Menu : " + MenuRekomendasi.length);
-console.log("Selesai!!");
+console.log("Selesai!!!!");
 
